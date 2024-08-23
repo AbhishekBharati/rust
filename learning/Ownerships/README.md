@@ -35,7 +35,8 @@ let s2 = s1.clone();
 
 But if the variable holds a value in the stack itself, then it doesn't matter we can use it after we pass it to a function.
 
-`fn main() {
+```
+```fn main() {
     let s = String::from("hello"); // s comes into the scope
     takes_ownership(s); // s's value moves into the function...
                         // ...and so s is no longer valid here
@@ -48,5 +49,7 @@ fn takes_ownership(some_string: String){// Some string comes into the scope.
 }// Here, some_string goes out of the scope and drop function is called. The backing memory is freed.
 fn makes_copy(some_int : i32){ // some_integer comes into the scope
   println!(some_int);
-}// Here, some_int goes out of the scope. Nothing special happens.`
+}// Here, some_int goes out of the scope. Nothing special happens.```
+
+
 
