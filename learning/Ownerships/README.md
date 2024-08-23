@@ -29,3 +29,24 @@ Can do it via :-
 let s2 = s1.clone();
 // Here we deeply copied the data that means s1 refers to different location and s2 refers to different location so we can access both of them.`
 
+## Ownerships and Functions :-
+- When we are passing a variable(who is storing an address that is pointing to a memory location on heap) inside a function as a parameter. The rust has to uninitialize it coz as the scope of that function is called `drop` will be called. Now if the variable is uninitialized in main block then as tha main block's scope will end Rust will again call the  `drop` function which will try to remove a memory allocation that doesn't exists.
+** So once we pass it to a function we can't use it.**
+
+But if the variable holds a value in the stack itself, then it doesn't matter we can use it after we pass it to a function.
+
+`fn main() {
+    let s = String::from("hello"); // s comes into the scope
+    takes_ownership(s); // s's value moves into the function...
+                        // ...and so s is no longer valid here
+    let x = 5; // x comes to scope.
+    makes_copy(x);      // x would move into the function,
+                        // but i32 is Copy, so it's ok to still use x afterward.
+}// Here, x goes out of the scope and then s. But s's value was moved, so nothing special happens.
+fn takes_ownership(some_string: String){// Some string comes into the scope.
+  println!(some_string);
+}// Here, some_string goes out of the scope and drop function is called. The backing memory is freed.
+fn makes_copy(some_int : i32){ // some_integer comes into the scope
+  println!(some_int);
+}// Here, some_int goes out of the scope. Nothing special happens.`
+
