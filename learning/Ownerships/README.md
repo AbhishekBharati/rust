@@ -1,14 +1,14 @@
-#Learning Ownerships :-
+# Learning Ownerships :-
 
-##Ownership Rules :-
+## Ownership Rules :-
  - Each value in Rust has an Owner.
  - There can be only one owner at a time.
  - When the owner goes out of the scope, the value will be dropped.
 
-` {                     // s is not valid here, it's not yet declared. 
+``` {                     // s is not valid here, it's not yet declared. 
     let s = "hello";   // s is valid from this point.
     // do stuff with s here.
-} //This scope is over and now s is no longer valid here.`
+} //This scope is over and now s is no longer valid here.```
 
  - Normal DataTypes are okay, coz when the scope is finished the variables will be popped out of stack.
  But, our area of Interest is what happens with the space that is dynamically allocated how does rust manages that?
