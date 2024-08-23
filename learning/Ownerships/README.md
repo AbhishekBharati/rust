@@ -5,10 +5,12 @@
  - There can be only one owner at a time.
  - When the owner goes out of the scope, the value will be dropped.
 
-``` {                     // s is not valid here, it's not yet declared. 
+``` 
+{                     // s is not valid here, it's not yet declared. 
     let s = "hello";   // s is valid from this point.
     // do stuff with s here.
-} //This scope is over and now s is no longer valid here.```
+} //This scope is over and now s is no longer valid here.
+```
 
  - Normal DataTypes are okay, coz when the scope is finished the variables will be popped out of stack.
  But, our area of Interest is what happens with the space that is dynamically allocated how does rust manages that?
@@ -36,7 +38,7 @@ let s2 = s1.clone();
 But if the variable holds a value in the stack itself, then it doesn't matter we can use it after we pass it to a function.
 
 ```
-```fn main() {
+fn main() {
     let s = String::from("hello"); // s comes into the scope
     takes_ownership(s); // s's value moves into the function...
                         // ...and so s is no longer valid here
